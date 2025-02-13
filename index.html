@@ -1,161 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Impact-Site-Verification" content="0575a24d-f519-4f59-b027-b078823b546d">
-    <title>The Best Blog Ever</title>
-    
-    <style>
-        /* Global Styling */
-        :root {
-            --primary-color: #00FF00;
-            --background-dark: #000000;
-            --text-light: #F6F6F6;
-            --border-radius: 8px;
-            --spacing: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EngageSense: The Black Box of Audience Engagement</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+--primary: #00ff00;
+--primary-dark: #00cc00;
+--background: #000000;
+--text: #ffffff;
+--accent: #1a1a1a;
+--glow: rgba(0, 255, 0, 0.5);
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-dark);
-            color: var(--text-light);
-        }
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Fira Code', monospace;
+}
 
-        /* Navigation Bar */
-        .navbar {
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-            background-color: black;
-            border-bottom: 2px solid var(--primary-color);
-        }
+body {
+background: var(--background);
+color: var(--text);
+line-height: 1.6;
+}
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
+nav {
+display: flex;
+justify-content: center;
+gap: 1.5rem;
+padding: 1rem;
+background-color: rgba(0, 0, 0, 0.9);
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+box-shadow: 0px 4px 10px var(--glow);
+flex-wrap: wrap;
+}
 
-        .navbar a:hover {
-            color: var(--primary-color);
-        }
+nav a {
+color: var(--text);
+text-decoration: none;
+padding: 0.5rem 1rem;
+font-weight: bold;
+transition: color 0.3s;
+}
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(180deg, #000000, #1a1a1a);
-            box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.3);
-            border-radius: var(--border-radius);
-        }
+nav a:hover {
+color: var(--primary);
+}
 
-        .hero h1 {
-            font-size: 3em;
-            color: var(--primary-color);
-            text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.5);
-        }
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+background: linear-gradient(to bottom, transparent, var(--accent));
+padding: 2rem;
+}
 
-        .hero p {
-            font-size: 1.2em;
-            color: var(--text-light);
-            margin-top: 10px;
-        }
+.hero h1 {
+font-size: 3rem;
+text-shadow: 0 0 15px var(--glow);
+animation: glow 1.5s infinite alternate;
+}
 
-        /* Green Box Sections */
-        .content-box {
-            background-color: var(--primary-color);
-            color: black;
-            padding: var(--spacing);
-            margin: var(--spacing) auto;
-            border-radius: var(--border-radius);
-            max-width: 90%;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.5em;
-            box-shadow: 0px 5px 10px rgba(0, 255, 0, 0.5);
-        }
+@keyframes glow {
+from { text-shadow: 0 0 10px var(--glow); }
+to { text-shadow: 0 0 25px var(--primary); }
+}
 
-        /* Sections */
-        .section {
-            padding: 40px 20px;
-            text-align: center;
-        }
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 2rem;
+}
 
-        .section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
+.section-title {
+font-size: 2rem;
+margin-bottom: 2rem;
+text-align: center;
+color: var(--primary);
+}
 
-        .section p {
-            font-size: 1.1em;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.features {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+}
 
-        /* Footer */
-        .footer {
-            background-color: black;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-            font-size: 0.9em;
-            border-top: 2px solid var(--primary-color);
-        }
+.feature-card {
+background: var(--accent);
+padding: 2rem;
+border-radius: 8px;
+border: 1px solid var(--primary);
+transition: transform 0.3s ease, box-shadow 0.3s;
+}
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-            .section h2 {
-                font-size: 1.8em;
-            }
-            .content-box {
-                font-size: 1.2em;
-                padding: 15px;
-            }
-        }
-    </style>
+.feature-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 0 20px var(--glow);
+}
+
+.chart-container {
+max-width: 800px;
+margin: 2rem auto;
+}
+
+iframe {
+width: 100%;
+height: 500px;
+border: 2px solid var(--primary);
+}
+
+.flowchart {
+display: flex;
+justify-content: center;
+margin: 2rem 0;
+}
+
+.flowchart img {
+width: 90%;
+max-width: 600px;
+border: 2px solid var(--primary);
+border-radius: 8px;
+}
+</style>
 </head>
 <body>
+<nav>
+<a href="#intro">Core System</a>
+<a href="#demo">Interactive Demo</a>
+<a href="#cpe">CPE Formula</a>
+<a href="#technical">Technical Features</a>
+</nav>
 
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="#">Core System</a>
-        <a href="#">Interactive Demo</a>
-        <a href="#">CPE Formula</a>
-        <a href="#">Technology Features</a>
-    </div>
+<section class="hero">
+<div class="container">
+<h1>EngageSense</h1>
+<p>The Black Box of Audience Engagement</p>
+</div>
+</section>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>EngageSense</h1>
-        <p>The Black Box of Audience Engagement</p>
-    </div>
+<div class="container">
+<section id="intro">
+<h2 class="section-title">Core System Overview</h2>
+<p>EngageSense captures and processes audience engagement data in real-time, integrating sensor inputs, biometric tracking, and AI-driven analytics.</p>
+<div class="flowchart">
+<img src="flowchart.png" alt="System Flowchart">
+</div>
+</section>
 
-    <!-- Core System Overview -->
-    <div class="content-box">Core System Overview</div>
-    <div class="section">
-        <p>EngageSense captures and processes audience engagement data in real-time, integrating sensor inputs, biometric tracking, and AI-driven analytics.</p>
-    </div>
+<section id="cpe">
+<h2 class="section-title">CPE Formula and Real-Time Analytics</h2>
+<p>The Crowd Performance & Engagement (CPE) Score is calculated using AI-driven algorithms analyzing six engagement dimensions.</p>
+<div class="chart-container">
+<canvas id="engagementChart"></canvas>
+</div>
+</section>
 
-    <!-- CPE Formula -->
-    <div class="content-box">CPE Formula & Real-Time Analytics</div>
-    <div class="section">
-        <p>The Crowd Performance & Engagement (CPE) Score is calculated using AI-driven algorithms analyzing six engagement dimensions.</p>
-    </div>
+<section id="technical">
+<h2 class="section-title">Technical Features</h2>
+<div class="features">
+<div class="feature-card"><h3>Sentiment Analysis</h3><p>Uses AI to analyze audience vocal tone and facial expressions.</p></div>
+<div class="feature-card"><h3>Predictive AI</h3><p>Foresees engagement trends and suggests adaptive strategies.</p></div>
+<div class="feature-card"><h3>Gamification System</h3><p>Encourages participation with engagement-based rewards.</p></div>
+<div class="feature-card"><h3>Data Benchmarking</h3><p>Compares engagement levels across events.</p></div>
+</div>
+</section>
 
-    <!-- Footer -->
-    <div class="footer">
-        &copy; 2025 The Best Blog Ever | All Rights Reserved
-    </div>
+<section id="demo">
+<h2 class="section-title">Interactive EngageSense Demo</h2>
+<iframe src="https://darling-zabaione-a5e03c.netlify.app/" title="EngageSense Interactive Demo"></iframe>
+<iframe src="https://liyamflx.github.io/2025es/" title="EngageSense Interactive Demo"></iframe>
+</section>
+</div>
 
+<script>
+const ctx = document.getElementById('engagementChart').getContext('2d');
+const engagementChart = new Chart(ctx, {
+type: 'line',
+data: {
+labels: ['10s', '20s', '30s', '40s', '50s', '60s'],
+datasets: [{
+label: 'Engagement Level',
+data: [12, 19, 7, 14, 22, 30],
+borderColor: '#00ff00',
+backgroundColor: 'rgba(0, 255, 0, 0.2)',
+fill: true
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: {
+labels: {
+color: 'white'
+}
+}
+},
+scales: {
+x: {
+ticks: { color: 'white' },
+grid: { color: 'gray' }
+},
+y: {
+ticks: { color: 'white' },
+grid: { color: 'gray' }
+}
+}
+}
+});
+</script>
 </body>
 </html>
